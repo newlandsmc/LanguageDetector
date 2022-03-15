@@ -1,0 +1,6 @@
+name: LanguageDetector
+version: '${project.version}'
+main: com.semivanilla.languagedetector.LanguageDetector
+api-version: 1.18
+authors: [ Alen_Alex ]
+description: A plugin to checkup the player's language and handle the chat accordingily if found otherwise
