@@ -1,7 +1,7 @@
 package com.semivanilla.languagedetector.files;
 
 import com.semivanilla.languagedetector.abstracts.AbstractConfiguration;
-import com.semivanilla.languagedetector.abstracts.AbstractHandler;
+import com.semivanilla.languagedetector.handler.FileHandler;
 import de.leonhard.storage.Yaml;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,7 +18,7 @@ public class WhitelistFile extends AbstractConfiguration {
 
     private final List<String> whitelistedUsers;
 
-    public WhitelistFile(AbstractHandler handler) {
+    public WhitelistFile(FileHandler handler) {
         super(handler);
         this.whitelistedUsers = new ArrayList<String>();
     }

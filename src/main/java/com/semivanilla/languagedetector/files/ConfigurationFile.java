@@ -2,11 +2,16 @@ package com.semivanilla.languagedetector.files;
 
 import com.semivanilla.languagedetector.abstracts.AbstractConfiguration;
 import com.semivanilla.languagedetector.abstracts.AbstractHandler;
+import com.semivanilla.languagedetector.enums.ConfigurationKeys;
+import com.semivanilla.languagedetector.handler.FileHandler;
 import de.leonhard.storage.Config;
 
 public class ConfigurationFile extends AbstractConfiguration {
 
-    public ConfigurationFile(AbstractHandler handler) {
+    private String apiToken;
+    private boolean apiSSL;
+
+    public ConfigurationFile(FileHandler handler) {
         super(handler);
     }
 
@@ -22,11 +27,20 @@ public class ConfigurationFile extends AbstractConfiguration {
 
     @Override
     public void loadFile() {
-
+        this.apiToken = file.getString(ConfigurationKeys.API_KEY.path);
+        this.apiSSL = file.getBoolean(ConfigurationKeys.API_SSL.path);
     }
 
     @Override
     public void prepareForReload() {
 
+    }
+
+    public String getApiToken() {
+        return apiToken;
+    }
+
+    public boolean isApiSSL() {
+        return apiSSL;
     }
 }

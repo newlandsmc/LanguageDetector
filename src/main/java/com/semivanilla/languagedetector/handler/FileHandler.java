@@ -21,11 +21,16 @@ public class FileHandler extends AbstractHandler {
         return configurationFile.initFile() && whitelistFile.initFile();
     }
 
+    public void loadConfiguration(){
+        this.configurationFile.loadFile();
+        this.whitelistFile.loadFile();
+    }
+
     public ConfigurationFile getConfigurationFile() {
         return configurationFile;
     }
 
-    public WhitelistFile getUserFile() {
+    public WhitelistFile getWhitelistFile() {
         return whitelistFile;
     }
 }
