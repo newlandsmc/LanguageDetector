@@ -26,6 +26,14 @@ public class FileHandler extends AbstractHandler {
         this.whitelistFile.loadFile();
     }
 
+    @Override
+    public long reloadHandler() {
+        long start = System.currentTimeMillis();
+        this.initHandler();
+        this.loadConfiguration();
+        return System.currentTimeMillis() - start;
+    }
+
     public ConfigurationFile getConfigurationFile() {
         return configurationFile;
     }

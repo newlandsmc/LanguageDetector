@@ -12,6 +12,10 @@ public abstract class AbstractHandler {
 
     public abstract boolean initHandler();
 
+    public long reloadHandler(){
+        return 0;
+    }
+
     public LanguageDetector getPlugin() {
         return plugin;
     }

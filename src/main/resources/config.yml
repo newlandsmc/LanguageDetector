@@ -7,3 +7,6 @@
 auth:
   api-key: "57824c8884271b0f4fbfb0c48003e4f4"
   ssl: "true"
+
+ignore-regex:
+  -

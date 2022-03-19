@@ -2,20 +2,24 @@ package com.semivanilla.languagedetector;
 
 import com.semivanilla.languagedetector.enums.ConfigurationKeys;
 import com.semivanilla.languagedetector.handler.FileHandler;
+import com.semivanilla.languagedetector.handler.RegexHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class LanguageDetector extends JavaPlugin {
+    private boolean pluginReloading = false;
 
     private FileHandler fileHandler;
     private DetectorAPI detectorAPI;
+    private RegexHandler regexHandler;
 
     @Override
     public void onEnable() {
         this.fileHandler = new FileHandler(this);
         this.detectorAPI = new DetectorAPI(this);
+        this.regexHandler = new RegexHandler(this);
 
         if(!this.fileHandler.initHandler()){
             getLogger().severe("Unable to initialize a plugin file. The plugin will be disabled!");
@@ -46,12 +50,18 @@ public final class LanguageDetector extends JavaPlugin {
             return;
         }
 
-
+        regexHandler.initHandler();
     }
 
     @Override
     public void onDisable() {
 
+    }
+
+    public void reloadPlugin(){
+        this.pluginReloading = true;
+
+        this.pluginReloading = false;
     }
 
     public FileHandler getFileHandler() {
@@ -60,5 +70,13 @@ public final class LanguageDetector extends JavaPlugin {
 
     public DetectorAPI getDetectorAPI() {
         return detectorAPI;
+    }
+
+    public boolean pluginReloading() {
+        return pluginReloading;
+    }
+
+    public RegexHandler getRegexHandler() {
+        return regexHandler;
     }
 }
